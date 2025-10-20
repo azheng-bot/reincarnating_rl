@@ -164,6 +164,8 @@ def distillation_loss(q_values,
                       distill_type=DistillType.POLICY_ONLY,
                       return_per_example_loss=False):
   """Helper for creating distillation loss."""
+  num_actions = q_values.shape[-1]
+  target = target[..., :num_actions]
   value_loss = jnp.mean(
       jax.vmap(losses.mse_loss)(target, q_values), axis=-1)
 
