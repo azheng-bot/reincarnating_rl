@@ -197,8 +197,8 @@ class ImpalaRainbowNetwork(nn.Module):
     x = net(x, features=512)  # Single hidden layer of size 512
     x = nn.relu(x)
 
+    print(f"aaaaaaa self.num_atoms: {self.num_atoms}, self.num_actions: {self.num_actions}")
     if self.dueling:
-      print(f"aaaaaaa self.num_atoms: {self.num_atoms}, self.num_actions: {self.num_actions}")
       adv = net(x, features=self.num_actions * self.num_atoms)
       value = net(x, features=self.num_atoms)
       adv = adv.reshape((self.num_actions, self.num_atoms))
@@ -228,6 +228,8 @@ class ImpalaImplicitQuantileNetwork(nn.Module):
 
   @nn.compact
   def __call__(self, x, num_quantiles, rng):
+    print(f"bbbbbbb self.num_atoms: {self.num_atoms}, self.num_actions: {self.num_actions}")
+    
     initializer = nn.initializers.variance_scaling(
         scale=1.0 / jnp.sqrt(3.0), mode='fan_in', distribution='uniform')
 
