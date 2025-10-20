@@ -45,6 +45,7 @@ class JAXDQNNetworkWithRepresentations(nn.Module):
 
   @nn.compact
   def __call__(self, x):
+    print(f"ccccccc self.num_actions: {self.num_actions}")
     initializer = nn.initializers.xavier_uniform()
     if not self.inputs_preprocessed:
       x = preprocess_atari_inputs(x)
