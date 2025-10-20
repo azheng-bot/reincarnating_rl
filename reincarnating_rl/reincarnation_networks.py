@@ -198,6 +198,7 @@ class ImpalaRainbowNetwork(nn.Module):
     x = nn.relu(x)
 
     if self.dueling:
+      print(f"aaaaaaa self.num_atoms: {self.num_atoms}, self.num_actions: {self.num_actions}")
       adv = net(x, features=self.num_actions * self.num_atoms)
       value = net(x, features=self.num_atoms)
       adv = adv.reshape((self.num_actions, self.num_atoms))
