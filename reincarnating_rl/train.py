@@ -113,10 +113,10 @@ def create_teacher_agent(environment,
 
   if teacher_agent == 'dqn':
     return teacher_dqn_agent.TeacherDQNAgent(
-        num_actions=environment.action_space.n, summary_writer=summary_writer)
+        num_actions=4, summary_writer=summary_writer)
   elif teacher_agent == 'rainbow':
     return teacher_rainbow_agent.TeacherRainbowAgent(
-        num_actions=environment.action_space.n, summary_writer=summary_writer)
+        num_actions=4, summary_writer=summary_writer)
   else:
     raise ValueError(f'{teacher_agent} is not a defined agent.')
 
