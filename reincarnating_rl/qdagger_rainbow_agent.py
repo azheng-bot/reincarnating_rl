@@ -105,6 +105,10 @@ def train_and_distill(
 
     # Compute distillation loss
     def distillation_loss_fn():
+            # 获取学生模型的动作数量distillation_loss_fn
+      num_actions = q_values.shape[-1]
+      # 调整教师模型的输出：只取前 num_actions 个动作
+      distill_target = distill_target[..., :num_actions]
       distill_loss = loss_helpers.distillation_loss(
           q_values,
           distill_temperature,
