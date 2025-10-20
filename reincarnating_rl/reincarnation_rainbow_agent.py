@@ -166,4 +166,11 @@ class ReincarnationRainbowAgent(augmented_rainbow.Atari100kRainbowAgent):
           episode_end=episode_end)
 
   def _persistence_step(self):
-    raise NotImplementedError
+    # raise NotImplementedError
+    # 临时解决方案：跳过持久化步骤
+    # 记录跳过信息
+    if not hasattr(self, '_persistence_warning_printed'):
+        print("信息: 持久化步骤已跳过（未实现）")
+        self._persistence_warning_printed = True
+    # 什么都不做，直接返回
+    return

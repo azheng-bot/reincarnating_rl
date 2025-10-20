@@ -174,9 +174,9 @@ class QDaggerRainbowAgent(
     else:
       self._td_coefficient = 1.0
 
-  def set_phase(self, reincarnation=False):
-    self._reincarnation_phase = reincarnation
-    if not reincarnation:
+  def set_phase(self, persistence=False):
+    self._reincarnation_phase = persistence
+    if not persistence:
       self._sync_weights()  # Sync online and target network before training.
 
   def _build_networks_and_optimizer(self):
