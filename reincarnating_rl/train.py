@@ -101,7 +101,7 @@ def create_agent(
     raise ValueError(f'{agent} is not defined.')
 
   return agent_fn(
-      num_actions=environment.action_space.n,
+      num_actions=4,
       seed=seed,
       summary_writer=summary_writer)
 
