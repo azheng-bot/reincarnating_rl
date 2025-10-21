@@ -43,7 +43,7 @@ QDaggerRainbowAgent.distill_decay_period = 2500000
 TeacherDQNAgent.load_replay = True
 TeacherDQNAgent.update_horizon = 3  # Same as Rainbow
 
-atari_lib.create_atari_environment.game_name = 'Pong'
+atari_lib.create_atari_environment.game_name = 'Breakout'
 # Sticky actions with probability 0.25, as suggested by (Machado et al., 2017).
 atari_lib.create_atari_environment.sticky_actions = True
 create_runner.schedule = 'continuous_train'
