@@ -164,14 +164,6 @@ def distillation_loss(q_values,
                       distill_type=DistillType.POLICY_ONLY,
                       return_per_example_loss=False):
   """Helper for creating distillation loss."""
-  # 确保形状匹配
-  num_actions = q_values.shape[-1]
-  if target.shape[-1] != num_actions:
-      # 裁剪教师输出以匹配学生输出
-      target = target[..., :num_actions]
-  
-  # 添加形状验证
-  print(f"蒸馏损失形状 - 学生: {q_values.shape}, 教师: {target.shape}, num_actions: {num_actions}", )
   value_loss = jnp.mean(
       jax.vmap(losses.mse_loss)(target, q_values), axis=-1)
 

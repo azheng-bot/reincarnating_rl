@@ -45,7 +45,6 @@ class JAXDQNNetworkWithRepresentations(nn.Module):
 
   @nn.compact
   def __call__(self, x):
-    print(f"ccccccc self.num_actions: {self.num_actions}")
     initializer = nn.initializers.xavier_uniform()
     if not self.inputs_preprocessed:
       x = preprocess_atari_inputs(x)
@@ -198,7 +197,6 @@ class ImpalaRainbowNetwork(nn.Module):
     x = net(x, features=512)  # Single hidden layer of size 512
     x = nn.relu(x)
 
-    print(f"aaaaaaa self.num_atoms: {self.num_atoms}, self.num_actions: {self.num_actions}")
     if self.dueling:
       adv = net(x, features=self.num_actions * self.num_atoms)
       value = net(x, features=self.num_atoms)
@@ -229,7 +227,6 @@ class ImpalaImplicitQuantileNetwork(nn.Module):
 
   @nn.compact
   def __call__(self, x, num_quantiles, rng):
-    print(f"bbbbbbb self.num_atoms: {self.num_atoms}, self.num_actions: {self.num_actions}")
     
     initializer = nn.initializers.variance_scaling(
         scale=1.0 / jnp.sqrt(3.0), mode='fan_in', distribution='uniform')
