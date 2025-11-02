@@ -169,6 +169,7 @@ class QDaggerRainbowAgent(
     self.distill_temperature = distill_temperature
     self.online_training_steps = 0
     self._method_type = method_type
+    self._reincarnation_phase = False  # 或根据逻辑设置为 True
     if method_type == MethodType.DAGGER:
       self._td_coefficient = 0.0
     else:
